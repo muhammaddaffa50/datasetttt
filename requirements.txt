@@ -1,5 +1,8 @@
 flask
 tensorflow-cpu
+tensorflow
 gunicorn
 pillow
 numpy
+opencv-python
+keras
