@@ -11,6 +11,105 @@
         <title>daun apa yok?</title>
     </head>
     <body>
+
+        <section
+        class="
+            flex-auto
+            justify-start
+            items-start
+            w-screen
+            h-screen
+            bg-red-100
+        "
+    >
+        <div class="container my-4">
+            <hr class="mt-5">
+          <hr class="mb-5"/>
+            <center>
+                <div>Teachable Machine Image Model</div>
+                <button type="button" onclick="init()">Start</button>
+                <div id="webcam-container"></div>
+                <div id="label-container"></div>
+            </center>
+
+          <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+          <script type="text/javascript">
+              // More API functions here:
+              // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+          
+              // the link to your model provided by Teachable Machine export panel
+              const URL = "https://teachablemachine.withgoogle.com/models/TgaJxH3Cc/";
+          
+              let model, webcam, labelContainer, maxPredictions;
+          
+              // Load the image model and setup the webcam
+              async function init() {
+                  const modelURL = URL + "model.json";
+                  const metadataURL = URL + "metadata.json";
+          
+                  // load the model and metadata
+                  // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+                  // or files from your local hard drive
+                  // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+                  model = await tmImage.load(modelURL, metadataURL);
+                  maxPredictions = model.getTotalClasses();
+          
+                  // Convenience function to setup a webcam
+                  const flip = true; // whether to flip the webcam
+                  webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+                  await webcam.setup(); // request access to the webcam
+                  await webcam.play();
+                  window.requestAnimationFrame(loop);
+          
+                  // append elements to the DOM
+                  document.getElementById("webcam-container").appendChild(webcam.canvas);
+                  labelContainer = document.getElementById("label-container");
+                  for (let i = 0; i < maxPredictions; i++) { // and class labels
+                      labelContainer.appendChild(document.createElement("div"));
+                  }
+              }
+          
+              async function loop() {
+                  webcam.update(); // update the webcam frame
+                  await predict();
+                  window.requestAnimationFrame(loop);
+              }
+          
+              // run the webcam image through the image model
+              async function predict() {
+                  // predict can take in an image, video or canvas html element
+                  const prediction = await model.predict(webcam.canvas);
+                  for (let i = 0; i < maxPredictions; i++) {
+                      const classPrediction =
+                          prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                      labelContainer.childNodes[i].innerHTML = classPrediction;
+                  }
+              }
+          </script>
+        
+        
+          </div>
+        
+        
+                    <!-- ======= Team Section ======= -->
+                    <section id="team" class="team section-bg">
+                        <div class="container" data-aos="fade-up">
+                          <div class="section-title">
+                          <div class="row">
+                            <center>
+                                <div>
+                                    <h2>cara gunakan nya</h2>
+                                    <div>
+                                      cara jalan kan nya di bawah ini :
+                                      <div>-==========================================-</div>
+                                      <div>1. kamu klik start yang ada di atas</div>
+                                      <div>2. masukkan foto belimbing wuluh atau daun jeruk</div>
+                                </div>
+                            </center>
+                        </div>
+                      </section><!-- End Team Section -->
+
         <section
             class="
                 flex
@@ -18,7 +117,7 @@
                 items-center
                 w-screen
                 h-screen
-                bg-indigo-500
+                bg-red-100
             "
         >
             <main
@@ -27,7 +126,7 @@
                     justify-center
                     items-center
                     p-16
-                    bg-white
+                    bg-gray-300
                     rounded-lg
                 "
             >
@@ -77,24 +176,46 @@
                     />
                     <button
                         type="submit"
-                        class="p-4 bg-indigo-500 text-white rounded-md"
+                        class="p-4 bg-green-500 text-white rounded-md"
                     >
                         Prediksi Gambar
                     </button>
                 </form>
             </main>
         </section>
-        <footer class="flex gap-x-8 justify-center items-center h-32 bg-white">
-            <img
-                class="h-16"
-                src="https://digitalent.kominfo.go.id/assets/@images/logo.png"
-                alt="logo-dts"
-            />
-            <img
-                class="h-16"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_of_Ministry_of_Communication_and_Information_Technology_of_the_Republic_of_Indonesia.svg/1200px-Logo_of_Ministry_of_Communication_and_Information_Technology_of_the_Republic_of_Indonesia.svg.png"
-                alt=""
-            />
-        </footer>
+
+        <section
+        class="
+            flex-auto
+            justify-start
+            items-start
+            w-screen
+            h-screen
+            bg-red-100
+        "
+    >
+                    <!-- ======= Team Section ======= -->
+                    <section id="team" class="team section-bg">
+                        <div class="container" data-aos="fade-up">
+                  
+                          <div class="section-title">
+                            
+                  
+                  
+                          <div class="row">
+                            <center>
+                                <div>
+                                    <h2>cara gunakan nya</h2>
+                                    <div>
+                                      cara jalan kan nya di bawah ini :
+                                      <div>-==========================================-</div>
+                                      <div>1. tekan choose file</div>
+                                      <div>2. masukkan foto belimbing wuluh atau daun jeruk</div>
+                                      <div>3. kalau sudah pilih salah satu daun pilih open</div>
+                                      <div>4. kalau sudah tekan prediksi gambar</div>
+                                </div>
+                            </center>
+                        </div>
+                      </section><!-- End Team Section -->
     </body>
 </html>
