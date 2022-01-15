@@ -1,14 +1,14 @@
-# Deployment Model CNN (Elephant vs Lion)
+# Deployment Model CNN (daun belimbing wuluh dan daun jeruk nipis)
 
 ## Deskripsi singkat
 
-Repository ini berisi semua file yang dibutuhkan untuk melakukan deployment model Machine Learning Image Classification menggunakan CNN (Convolutional Neural Network). Adapun model yang digunakan merupakan model untuk memprediksi gambar gajah atau singa (Elephant vs Lion).
+Repository ini berisi semua file yang dibutuhkan untuk melakukan deployment model Machine Learning Image Classification menggunakan CNN (Convolutional Neural Network). Adapun model yang digunakan merupakan model untuk memprediksi gambar belimbing wuluh atau jeruk nipis (daun belimbing wuluh dan daun jeruk nipis).
 
 #
 
 ## Sekilas mengenai input model
 
-Agar dapat memprediksi kucing atau anjing, data input model harus mengikuti format sebagai berikut:
+Agar dapat memprediksi daun belimbing wuluh dan daun jeruk nipis, data input model harus mengikuti format sebagai berikut:
 
 -   Gambar dengan format umum seperti .jpeg, .png, .webp, dsb.
 -   Gambar dikonversi ke dalam bentuk array/tensor
@@ -23,7 +23,7 @@ Agar dapat memprediksi kucing atau anjing, data input model harus mengikuti form
 -   templates/
     -   index.html --> Berisi template website.
 -   app.py --> Berisi konfigurasi route dan proses prediksi model untuk API.
--   elephant_lion_class_model.h5 --> Model Image Classification CNN yang sudah di-training.
+-   belimbingjeruk.h5 --> Model Image Classification CNN yang sudah di-training.
 -   requirements.txt --> Berisi daftar dependency/package Python yang diperlukan untuk menjalankan API dan model Image Classification CNN.
 
 #
@@ -44,5 +44,5 @@ Agar dapat memprediksi kucing atau anjing, data input model harus mengikuti form
 ## Akses melalui Website
 
 1. Anda akan diberikan URL untuk membuka website berupa `localhost:5000/` atau `127.0.0.1:5000/`.
-1. Buka URL dengan browser, coba masukkan gambar gajah atau singa yang ingin di prediksi.
-1. Anda akan diberikan prediksi bahwa pada gambar tersebut adalah gajah atau singa pada halaman website.
+1. Buka URL dengan browser, coba masukkan gambar belimbing wuluh atau jeruk nipis yang ingin di prediksi.
+1. Anda akan diberikan prediksi bahwa pada gambar tersebut adalah belimbing wuluh atau jeruk nipis pada halaman website.
